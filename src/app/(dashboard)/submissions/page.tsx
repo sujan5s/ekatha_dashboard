@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import useSWR from "swr";
 import PageHeader from "@/components/shell/PageHeader";
 import Modal from "@/components/ui/Modal";
 import Button from "@/components/ui/Button";
@@ -17,33 +18,39 @@ const NEXT: Record<SubmissionStatus, SubmissionStatus | null> = {
 
 export default function SubmissionsPage() {
   const toast = useToast();
-  const [items, setItems] = useState<Submission[]>([]);
   const [filter, setFilter] = useState<SubmissionStatus | "ALL">("ALL");
   const [active, setActive] = useState<Submission | null>(null);
-  const [loading, setLoading] = useState(true);
 
-  const load = useCallback(async () => {
-    setLoading(true);
-    try {
-      const q = filter === "ALL" ? "" : `?status=${filter}`;
-      setItems(await api<Submission[]>(`/api/submissions${q}`));
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to load");
-    } finally {
-      setLoading(false);
-    }
-  }, [filter, toast]);
+  const { data, error, isLoading, mutate } = useSWR<Submission[]>(
+    `/api/submissions${filter === "ALL" ? "" : `?status=${filter}`}`,
+    api
+  );
+
+  const items = data || [];
+  const loading = isLoading;
 
   useEffect(() => {
-    void load();
-  }, [load]);
+    if (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to load");
+    }
+  }, [error, toast]);
 
   async function setStatus(item: Submission, status: SubmissionStatus) {
+    const optimisticData =
+      filter === "ALL"
+        ? items.map((i) => (i.id === item.id ? { ...i, status } : i))
+        : items.filter((i) => i.id !== item.id);
+    
+    setActive(null);
     try {
-      await api(`/api/submissions/${item.id}`, { method: "PATCH", body: { status } });
-      toast.success(`Marked ${status.toLowerCase()}`);
-      setActive(null);
-      await load();
+      await mutate(
+        async () => {
+          await api(`/api/submissions/${item.id}`, { method: "PATCH", body: { status } });
+          toast.success(`Marked ${status.toLowerCase()}`);
+          return api<Submission[]>(`/api/submissions${filter === "ALL" ? "" : `?status=${filter}`}`);
+        },
+        { optimisticData, rollbackOnError: true, revalidate: false }
+      );
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Update failed");
     }

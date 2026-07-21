@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useSWR from "swr";
 import Link from "next/link";
 import PageHeader from "@/components/shell/PageHeader";
 import { api } from "@/lib/api";
@@ -29,14 +30,9 @@ const CARDS: { key: string; label: string; href: string }[] = [
 
 export default function OverviewPage() {
   const { user } = useAuth();
-  const [data, setData] = useState<Overview | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    api<Overview>("/api/overview")
-      .then(setData)
-      .catch((e) => setError(e instanceof Error ? e.message : "Failed to load"));
-  }, []);
+  const [showAllActivity, setShowAllActivity] = useState(false);
+  
+  const { data, error } = useSWR<Overview>("/api/overview", api);
 
   return (
     <>
@@ -90,23 +86,41 @@ export default function OverviewPage() {
           <h2 className="mt-8 mb-3 text-sm font-bold uppercase tracking-wide text-muted">
             Recent activity
           </h2>
-          <div className="rounded-2xl border border-line bg-white shadow-sm">
+          <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-sm">
             {data.recentActivity.length === 0 ? (
               <div className="p-6 text-center text-sm text-muted">
                 No changes logged yet.
               </div>
             ) : (
-              data.recentActivity.map((a) => (
-                <div
-                  key={a.id}
-                  className="flex items-center justify-between border-b border-line px-5 py-3 text-sm last:border-0"
-                >
-                  <span className="font-medium text-ink">{a.action}</span>
-                  <span className="text-muted">
-                    {a.userEmail} · {new Date(a.createdAt).toLocaleString()}
-                  </span>
-                </div>
-              ))
+              <>
+                {(showAllActivity
+                  ? data.recentActivity
+                  : data.recentActivity.slice(0, 10)
+                ).map((a) => (
+                  <div
+                    key={a.id}
+                    className="flex items-center justify-between border-b border-line px-5 py-3 text-sm last:border-0"
+                  >
+                    <span className="font-medium text-ink">{a.action}</span>
+                    <span className="text-muted">
+                      {a.userEmail} · {new Date(a.createdAt).toLocaleString()}
+                    </span>
+                  </div>
+                ))}
+
+                {data.recentActivity.length > 10 && (
+                  <div className="border-t border-line bg-surface/50 p-3 text-center">
+                    <button
+                      onClick={() => setShowAllActivity(!showAllActivity)}
+                      className="text-sm font-semibold text-saffron hover:underline cursor-pointer"
+                    >
+                      {showAllActivity
+                        ? "Show less"
+                        : `Show more (${data.recentActivity.length - 10} more)`}
+                    </button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </>

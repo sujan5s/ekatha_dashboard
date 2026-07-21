@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import useSWR from "swr";
 import PageHeader from "@/components/shell/PageHeader";
 import Button from "@/components/ui/Button";
 import { TextInput } from "@/components/ui/Field";
@@ -10,7 +11,7 @@ import { useAuth } from "@/lib/auth";
 import type { AdminUserRow, Role } from "@/lib/types";
 
 const PAGE_LABELS: Record<string, string> = {
-  overview: "Overview",
+  overview: "Home Page",
   "home-hero": "Hero",
   "home-counters": "Counters",
   "home-impact": "Impact",
@@ -24,36 +25,41 @@ const PAGE_LABELS: Record<string, string> = {
 export default function UsersPage() {
   const toast = useToast();
   const { user: me } = useAuth();
-  const [users, setUsers] = useState<AdminUserRow[]>([]);
-  const [pageKeys, setPageKeys] = useState<string[]>([]);
-  const [query, setQuery] = useState("");
+  const [queryInput, setQueryInput] = useState("");
+  const [submittedQuery, setSubmittedQuery] = useState("");
   const [expanded, setExpanded] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
 
-  const load = useCallback(async (q = "") => {
-    setLoading(true);
-    try {
-      const data = await api<{ users: AdminUserRow[]; pageKeys: string[] }>(
-        `/api/users${q ? `?q=${encodeURIComponent(q)}` : ""}`,
-      );
-      setUsers(data.users);
-      setPageKeys(data.pageKeys);
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to load");
-    } finally {
-      setLoading(false);
-    }
-  }, [toast]);
+  const { data, error, isLoading, mutate } = useSWR<{ users: AdminUserRow[]; pageKeys: string[] }>(
+    `/api/users${submittedQuery ? `?q=${encodeURIComponent(submittedQuery)}` : ""}`,
+    api
+  );
+
+  const users = data?.users || [];
+  const pageKeys = data?.pageKeys || [];
+  const loading = isLoading;
 
   useEffect(() => {
-    void load();
-  }, [load]);
+    if (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to load");
+    }
+  }, [error, toast]);
 
   async function changeRole(u: AdminUserRow, role: Role) {
+    const optimisticData = {
+      users: users.map((user) => (user.id === u.id ? { ...user, role } : user)),
+      pageKeys,
+    };
     try {
-      await api(`/api/users/${u.id}/role`, { method: "PATCH", body: { role } });
-      toast.success(`${u.name} is now ${role}`);
-      await load(query);
+      await mutate(
+        async () => {
+          await api(`/api/users/${u.id}/role`, { method: "PATCH", body: { role } });
+          toast.success(`${u.name} is now ${role}`);
+          return api<{ users: AdminUserRow[]; pageKeys: string[] }>(
+            `/api/users${submittedQuery ? `?q=${encodeURIComponent(submittedQuery)}` : ""}`
+          );
+        },
+        { optimisticData, rollbackOnError: true, revalidate: false }
+      );
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Update failed");
     }
@@ -66,7 +72,7 @@ export default function UsersPage() {
         body: { pageKeys: keys },
       });
       toast.success("Permissions saved");
-      await load(query);
+      await mutate();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Save failed");
     }
@@ -82,14 +88,14 @@ export default function UsersPage() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          void load(query);
+          setSubmittedQuery(queryInput);
         }}
         className="mb-4 flex max-w-sm gap-2"
       >
         <TextInput
           placeholder="Search email or name…"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          value={queryInput}
+          onChange={(e) => setQueryInput(e.target.value)}
         />
         <Button type="submit" variant="ghost">
           Search
@@ -158,32 +164,78 @@ function VolunteerPermissions({
   current: string[];
   onSave: (keys: string[]) => void;
 }) {
-  const [selected, setSelected] = useState<Set<string>>(new Set(current));
+  const HOME_KEYS = [
+    "overview",
+    "home-hero",
+    "home-about",
+    "home-counters",
+    "home-impact",
+    "home-gallery",
+    "home-stories",
+    "home-team",
+    "home-faq",
+  ];
+
+  const isHomeSelected = current.some((k) => k === "overview" || k.startsWith("home-"));
+  const otherKeys = pageKeys.filter((k) => k !== "overview" && !k.startsWith("home-"));
+
+  const [homeChecked, setHomeChecked] = useState(isHomeSelected);
+  const [selectedOthers, setSelectedOthers] = useState<Set<string>>(
+    new Set(current.filter((k) => !HOME_KEYS.includes(k)))
+  );
+
+  const handleSave = () => {
+    const finalKeys: string[] = [...selectedOthers];
+    if (homeChecked) {
+      finalKeys.push(...HOME_KEYS);
+    }
+    onSave(finalKeys);
+  };
 
   return (
     <div className="mt-4 border-t border-line pt-4">
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-        {pageKeys.map((key) => (
-          <label key={key} className="flex items-center gap-2 text-sm">
-            <input
-              type="checkbox"
-              checked={selected.has(key)}
-              onChange={(e) => {
-                setSelected((s) => {
-                  const next = new Set(s);
-                  if (e.target.checked) next.add(key);
-                  else next.delete(key);
-                  return next;
-                });
-              }}
-              className="h-4 w-4 accent-saffron"
-            />
-            {PAGE_LABELS[key] ?? key}
-          </label>
-        ))}
+      <div className="text-xs font-semibold uppercase tracking-wider text-muted mb-3">
+        Page Access Permissions
+      </div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <label className="flex items-center gap-2.5 rounded-lg border border-line bg-cream/20 p-2.5 text-sm font-medium text-ink transition hover:bg-cream/40 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={homeChecked}
+            onChange={(e) => setHomeChecked(e.target.checked)}
+            className="h-4 w-4 rounded accent-saffron"
+          />
+          <span>Home Page</span>
+        </label>
+
+        {otherKeys.map((key) => {
+          const label = PAGE_LABELS[key] ?? key;
+          const isChecked = selectedOthers.has(key);
+          return (
+            <label
+              key={key}
+              className="flex items-center gap-2.5 rounded-lg border border-line bg-cream/20 p-2.5 text-sm font-medium text-ink transition hover:bg-cream/40 cursor-pointer"
+            >
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={(e) => {
+                  setSelectedOthers((prev) => {
+                    const next = new Set(prev);
+                    if (e.target.checked) next.add(key);
+                    else next.delete(key);
+                    return next;
+                  });
+                }}
+                className="h-4 w-4 rounded accent-saffron"
+              />
+              <span>{label}</span>
+            </label>
+          );
+        })}
       </div>
       <div className="mt-4">
-        <Button onClick={() => onSave([...selected])}>Save access</Button>
+        <Button onClick={handleSave}>Save access</Button>
       </div>
     </div>
   );

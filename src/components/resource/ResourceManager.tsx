@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import useSWR from "swr";
+import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
 import { useToast } from "@/components/ui/Toast";
 import Modal from "@/components/ui/Modal";
@@ -21,28 +22,27 @@ export default function ResourceManager<T extends ResourceItem>({
   banner?: (items: T[]) => React.ReactNode;
 }) {
   const toast = useToast();
-  const [items, setItems] = useState<T[]>([]);
-  const [loading, setLoading] = useState(true);
+  const cacheKey = `/api/${config.endpoint}`;
+  const {
+    data: items,
+    error,
+    isLoading: loading,
+    mutate,
+  } = useSWR<T[]>(cacheKey, api);
+
+  const safeItems = items || [];
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to load");
+    }
+  }, [error, toast]);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<T | null>(null);
   const [form, setForm] = useState<Record<string, unknown>>({});
   const [saving, setSaving] = useState(false);
   const [deleteTarget, setDeleteTarget] = useState<T | null>(null);
-
-  const load = useCallback(async () => {
-    setLoading(true);
-    try {
-      setItems(await api<T[]>(`/api/${config.endpoint}`));
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to load");
-    } finally {
-      setLoading(false);
-    }
-  }, [config.endpoint, toast]);
-
-  useEffect(() => {
-    void load();
-  }, [load]);
 
   function openCreate() {
     setEditing(null);
@@ -63,17 +63,35 @@ export default function ResourceManager<T extends ResourceItem>({
     setSaving(true);
     try {
       if (editing) {
-        await api(`/api/${config.endpoint}/${editing.id}`, {
-          method: "PATCH",
-          body: form,
-        });
-        toast.success(`${config.singular} updated`);
+        const optimisticUpdated = safeItems.map((i) =>
+          i.id === editing.id ? ({ ...i, ...form } as T) : i
+        );
+        await mutate(
+          async () => {
+            const updated = await api<T>(`/api/${config.endpoint}/${editing.id}`, {
+              method: "PATCH",
+              body: form,
+            });
+            toast.success(`${config.singular} updated`);
+            return safeItems.map((i) => (i.id === editing.id ? updated : i));
+          },
+          { optimisticData: optimisticUpdated, rollbackOnError: true, revalidate: false }
+        );
       } else {
-        await api(`/api/${config.endpoint}`, { method: "POST", body: form });
-        toast.success(`${config.singular} added`);
+        const tempItem = { ...form, id: `temp-${Date.now()}` } as unknown as T;
+        await mutate(
+          async () => {
+            const created = await api<T>(`/api/${config.endpoint}`, {
+              method: "POST",
+              body: form,
+            });
+            toast.success(`${config.singular} added`);
+            return [...safeItems, created];
+          },
+          { optimisticData: [...safeItems, tempItem], rollbackOnError: true, revalidate: false }
+        );
       }
       setModalOpen(false);
-      await load();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Save failed");
     } finally {
@@ -82,19 +100,39 @@ export default function ResourceManager<T extends ResourceItem>({
   }
 
   async function remove(item: T) {
-    await api(`/api/${config.endpoint}/${item.id}`, { method: "DELETE" });
-    toast.success(`${config.singular} deleted`);
-    await load();
+    const optimisticData = safeItems.filter((i) => i.id !== item.id);
+    setDeleteTarget(null);
+    try {
+      await mutate(
+        async () => {
+          await api(`/api/${config.endpoint}/${item.id}`, { method: "DELETE" });
+          toast.success(`${config.singular} deleted`);
+          return optimisticData;
+        },
+        { optimisticData, rollbackOnError: true, revalidate: false }
+      );
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Delete failed");
+    }
   }
 
   async function toggle(item: T) {
     const field = config.toggleField!;
+    const newValue = !rec(item)[field];
+    const optimisticData = safeItems.map((i) =>
+      i.id === item.id ? ({ ...i, [field]: newValue } as T) : i
+    );
     try {
-      await api(`/api/${config.endpoint}/${item.id}`, {
-        method: "PATCH",
-        body: { [field]: !rec(item)[field] },
-      });
-      await load();
+      await mutate(
+        async () => {
+          await api(`/api/${config.endpoint}/${item.id}`, {
+            method: "PATCH",
+            body: { [field]: newValue },
+          });
+          return optimisticData;
+        },
+        { optimisticData, rollbackOnError: true, revalidate: false }
+      );
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Update failed");
     }
@@ -102,35 +140,40 @@ export default function ResourceManager<T extends ResourceItem>({
 
   async function move(index: number, dir: -1 | 1) {
     const next = index + dir;
-    if (next < 0 || next >= items.length) return;
-    const reordered = [...items];
+    if (next < 0 || next >= safeItems.length) return;
+    const reordered = [...safeItems];
     const [moved] = reordered.splice(index, 1);
     reordered.splice(next, 0, moved!);
-    setItems(reordered);
+    
     try {
-      await api(`/api/${config.endpoint}/reorder`, {
-        method: "POST",
-        body: { ids: reordered.map((i) => i.id) },
-      });
+      await mutate(
+        async () => {
+          await api(`/api/${config.endpoint}/reorder`, {
+            method: "POST",
+            body: { ids: reordered.map((i) => i.id) },
+          });
+          return reordered;
+        },
+        { optimisticData: reordered, rollbackOnError: true, revalidate: false }
+      );
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Reorder failed");
-      void load();
     }
   }
 
   return (
     <>
-      {!loading && banner ? banner(items) : null}
+      {!loading && banner ? banner(safeItems) : null}
       <div className="flex flex-col gap-3">
         {loading ? (
           <ListSkeleton />
-        ) : items.length === 0 ? (
+        ) : safeItems.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-line bg-white/50 py-16 text-center text-sm text-muted">
             No {config.singular.toLowerCase()} yet. Click “Add {config.singular}”
             to create one.
           </div>
         ) : (
-          items.map((item, i) => (
+          safeItems.map((item, i) => (
             <div
               key={item.id}
               className="flex items-center gap-4 rounded-2xl border border-line bg-white p-4 shadow-sm"
@@ -147,7 +190,7 @@ export default function ResourceManager<T extends ResourceItem>({
                   </button>
                   <button
                     onClick={() => move(i, 1)}
-                    disabled={i === items.length - 1}
+                    disabled={i === safeItems.length - 1}
                     className="px-1 leading-none hover:text-ink disabled:opacity-25"
                     aria-label="Move down"
                   >
