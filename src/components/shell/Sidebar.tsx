@@ -1,14 +1,22 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NAV_ITEMS, SECTION_ORDER, NavItem } from "@/lib/nav";
+import { preload } from "swr";
+import { NAV_ITEMS, SECTION_ORDER, NavItem, PREFETCH_KEY_BY_HREF } from "@/lib/nav";
+import { api } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 
 export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
   const { allowedPages } = useAuth();
+
+  // Warm the target page's data cache on hover/focus so the click feels instant.
+  const prefetch = useCallback((href: string) => {
+    const key = PREFETCH_KEY_BY_HREF[href];
+    if (key) void preload(key, api);
+  }, []);
 
   const isHomeRoute =
     pathname === "/" ||
@@ -86,6 +94,8 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                         <Link
                           href={item.href}
                           onClick={onNavigate}
+                          onMouseEnter={() => prefetch(item.href)}
+                          onFocus={() => prefetch(item.href)}
                           className="flex flex-1 items-center gap-3"
                         >
                           <span className="w-4 text-center text-xs opacity-90">
@@ -129,6 +139,8 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                                 key={child.pageKey}
                                 href={child.href}
                                 onClick={onNavigate}
+                                onMouseEnter={() => prefetch(child.href)}
+                                onFocus={() => prefetch(child.href)}
                                 className={`flex items-center gap-2.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition ${
                                   active
                                     ? "bg-saffron/90 text-white font-semibold shadow-sm"
@@ -158,6 +170,8 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                     key={item.pageKey}
                     href={item.href}
                     onClick={onNavigate}
+                    onMouseEnter={() => prefetch(item.href)}
+                    onFocus={() => prefetch(item.href)}
                     className={`mb-0.5 flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition ${
                       active
                         ? "bg-saffron text-white shadow-[0_4px_14px_rgba(232,93,4,0.35)]"

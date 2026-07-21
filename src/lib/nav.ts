@@ -32,3 +32,22 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const SECTION_ORDER: NavItem["section"][] = ["Main", "Admin"];
+
+/**
+ * Maps a nav href to the SWR key its page fetches, so the sidebar can warm the
+ * cache on hover. Only routes with a known, safe GET endpoint are listed; a
+ * missing entry simply means no prefetch (never a bad request).
+ */
+export const PREFETCH_KEY_BY_HREF: Record<string, string> = {
+  "/": "/api/overview",
+  "/hero": "/api/hero",
+  "/about": "/api/home-text",
+  "/counters": "/api/counters",
+  "/impact": "/api/impact",
+  "/gallery": "/api/gallery",
+  "/stories": "/api/stories",
+  "/team": "/api/team",
+  "/faq": "/api/faq",
+  "/submissions": "/api/submissions",
+  "/users": "/api/users",
+};

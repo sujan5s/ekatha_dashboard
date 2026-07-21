@@ -41,9 +41,9 @@ export default function OverviewPage() {
         subtitle="A snapshot of the Team Ekata homepage content."
       />
 
-      {error ? (
+      {error && !data ? (
         <div className="rounded-xl bg-danger/10 px-4 py-3 text-sm text-danger">
-          {error}
+          {error instanceof Error ? error.message : "Failed to load overview."}
         </div>
       ) : !data ? (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">

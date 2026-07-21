@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
+import { SWRProvider } from "@/lib/swr-provider";
 import { ToastProvider } from "@/components/ui/Toast";
 
 const fraunces = Fraunces({
@@ -31,7 +32,9 @@ export default function RootLayout({
     >
       <body className="font-sans" suppressHydrationWarning>
         <ToastProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <SWRProvider>
+            <AuthProvider>{children}</AuthProvider>
+          </SWRProvider>
         </ToastProvider>
       </body>
     </html>
