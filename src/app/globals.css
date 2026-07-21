@@ -35,10 +35,14 @@ body {
   color: #fff;
 }
 
-/* Thin, tidy scrollbars for the admin surfaces. */
+/* Hide scrollbar site-wide but allow scrolling */
+::-webkit-scrollbar {
+  display: none;
+}
+
 * {
-  scrollbar-width: thin;
-  scrollbar-color: #d8d0c6 transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 @keyframes ek-spin {
@@ -46,6 +50,7 @@ body {
     transform: rotate(360deg);
   }
 }
+
 .ek-spin {
   animation: ek-spin 0.7s linear infinite;
 }
@@ -55,11 +60,13 @@ body {
     opacity: 0;
     transform: scale(0.96) translateY(6px);
   }
+
   to {
     opacity: 1;
     transform: none;
   }
 }
+
 .ek-pop {
   animation: ek-pop 0.18s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -69,11 +76,13 @@ body {
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: none;
   }
 }
+
 .ek-toast-in {
   animation: ek-toast-in 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
