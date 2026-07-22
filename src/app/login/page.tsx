@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { api, API_BASE, ApiError, setToken } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 import { useToast } from "@/components/ui/Toast";
@@ -84,8 +85,15 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-forest-deep p-4">
       <div className="ek-pop w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl">
         <div className="mb-6 flex items-center gap-2.5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-saffron to-gold text-sm font-extrabold text-white">
-            TE
+          <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-line bg-cream/40 shadow-sm">
+            <Image
+              src="/logo.webp"
+              alt="Ekatha Logo"
+              width={40}
+              height={40}
+              className="h-full w-full object-cover"
+              priority
+            />
           </div>
           <div className="font-display text-2xl font-bold text-ink">
             Ekatha <span className="text-saffron">Admin</span>

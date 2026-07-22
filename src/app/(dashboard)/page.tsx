@@ -60,7 +60,7 @@ export default function OverviewPage() {
             <div>
               <div className="text-sm text-cream/70">New submissions</div>
               <div className="font-display text-3xl font-semibold">
-                {data.newSubmissions}
+                {data?.newSubmissions ?? 0}
               </div>
             </div>
             <span className="text-sm font-semibold text-saffron-light">
@@ -76,7 +76,7 @@ export default function OverviewPage() {
                 className="rounded-2xl border border-line bg-white p-5 shadow-sm transition hover:border-saffron/40 hover:shadow-md"
               >
                 <div className="font-display text-3xl font-semibold text-ink">
-                  {data.counts[c.key] ?? 0}
+                  {data?.counts?.[c.key] ?? 0}
                 </div>
                 <div className="mt-1 text-sm text-muted">{c.label}</div>
               </Link>
@@ -87,7 +87,7 @@ export default function OverviewPage() {
             Recent activity
           </h2>
           <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-sm">
-            {data.recentActivity.length === 0 ? (
+            {!data?.recentActivity || data.recentActivity.length === 0 ? (
               <div className="p-6 text-center text-sm text-muted">
                 No changes logged yet.
               </div>

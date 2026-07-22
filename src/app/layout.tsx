@@ -18,7 +18,12 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Ekatha Admin",
-  description: "Content control panel for Team Ekata.",
+  description: "Content control panel for Team Ekatha.",
+  icons: {
+    icon: "/icon.webp?v=2",
+    shortcut: "/icon.webp?v=2",
+    apple: "/icon.webp?v=2",
+  },
 };
 
 export default function RootLayout({

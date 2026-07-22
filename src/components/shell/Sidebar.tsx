@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { preload } from "swr";
 import { NAV_ITEMS, SECTION_ORDER, NavItem, PREFETCH_KEY_BY_HREF } from "@/lib/nav";
@@ -52,8 +53,14 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <aside className="flex h-full w-64 shrink-0 flex-col bg-forest-deep text-cream/80 select-none">
       <div className="flex items-center gap-2.5 px-6 py-5">
-        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-saffron to-gold text-xs font-extrabold text-white">
-          TE
+        <div className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10 shadow-sm">
+          <Image
+            src="/logo.webp"
+            alt="Ekatha Logo"
+            width={36}
+            height={36}
+            className="h-full w-full object-cover"
+          />
         </div>
         <div className="leading-tight">
           <div className="font-display text-lg font-bold text-white">
