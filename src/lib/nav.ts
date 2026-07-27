@@ -27,6 +27,7 @@ export const NAV_ITEMS: NavItem[] = [
     ],
   },
   { pageKey: "form-control", label: "Form Control", href: "/form-control", icon: "📝", section: "Main" },
+  { pageKey: "applications", label: "Applications", href: "/applications", icon: "🔍", section: "Main" },
   { pageKey: "submissions", label: "Submissions", href: "/submissions", icon: "✉", section: "Main" },
 
   { pageKey: "users", label: "User Control", href: "/users", icon: "⚿", section: "Admin" },
@@ -50,6 +51,7 @@ export const PREFETCH_KEY_BY_HREF: Record<string, string> = {
   "/team": "/api/team",
   "/faq": "/api/faq",
   "/form-control": "/api/form-control",
+  "/applications": "/api/applications",
   "/submissions": "/api/submissions",
   "/users": "/api/users",
 };

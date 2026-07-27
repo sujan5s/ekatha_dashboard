@@ -60,3 +60,39 @@ export async function api<T = unknown>(
   }
   return data as T;
 }
+
+/**
+ * Download a file from an authenticated endpoint.
+ *
+ * A plain <a href> can't carry the Bearer token, so fetch the bytes, hand them to
+ * the browser as an object URL, and revoke it once the click has been dispatched.
+ */
+export async function downloadFile(path: string, fallbackName: string): Promise<void> {
+  const headers: Record<string, string> = {};
+  const token = getToken();
+  if (token) headers.authorization = `Bearer ${token}`;
+
+  const res = await fetch(`${API_BASE}${path}`, { headers });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new ApiError(
+      res.status,
+      (data as { error?: string }).error ?? `Download failed (${res.status})`,
+    );
+  }
+
+  // Prefer the server's filename so exports carry the beneficiary's name.
+  const disposition = res.headers.get("content-disposition") ?? "";
+  const match = disposition.match(/filename="?([^";]+)"?/i);
+  const fileName = match?.[1] ?? fallbackName;
+
+  const blob = await res.blob();
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}

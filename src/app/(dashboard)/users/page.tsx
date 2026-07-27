@@ -19,6 +19,7 @@ const PAGE_LABELS: Record<string, string> = {
   "home-team": "Team",
   "home-faq": "FAQ",
   "form-control": "Form Control",
+  applications: "Applications (OCR review)",
   submissions: "Form Submissions",
 };
 
