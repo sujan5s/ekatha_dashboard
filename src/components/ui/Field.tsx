@@ -38,6 +38,8 @@ export function TextArea(
   );
 }
 
+export const TextareaInput = TextArea;
+
 export function Select(props: React.SelectHTMLAttributes<HTMLSelectElement>) {
   return <select {...props} className={`${inputClass} ${props.className ?? ""}`} />;
 }
