@@ -2,6 +2,7 @@
 
 import { useState, useEffect, use } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
 import PageHeader from "@/components/shell/PageHeader";
 import Button from "@/components/ui/Button";
@@ -30,6 +31,9 @@ export default function ApplicationDetailPage({
 }) {
   const { id } = use(params);
   const toast = useToast();
+  // Exports link straight at a document (…?doc=<id>); honour that so the link
+  // lands the reviewer on the right card instead of the top of the page.
+  const focusDocId = useSearchParams().get("doc");
 
   const { data, error, isLoading, mutate } = useSWR<ApplicationDetail>(
     `/api/applications/${id}`,
@@ -42,7 +46,7 @@ export default function ApplicationDetailPage({
 
   const [reviewOpen, setReviewOpen] = useState(false);
   const [rerunning, setRerunning] = useState(false);
-  const [exporting, setExporting] = useState<"pdf" | "xlsx" | null>(null);
+  const [exporting, setExporting] = useState(false);
 
   useEffect(() => {
     if (error) toast.error(error instanceof Error ? error.message : "Failed to load application");
@@ -52,7 +56,7 @@ export default function ApplicationDetailPage({
     setRerunning(true);
     try {
       await api(`/api/applications/${id}/verify`, { method: "POST" });
-      toast.success("Re-reading documents — this takes a few seconds");
+      toast.success("Re-reading documents — your corrections are kept");
       await mutate();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Could not start verification");
@@ -61,15 +65,15 @@ export default function ApplicationDetailPage({
     }
   }
 
-  async function exportFile(kind: "pdf" | "xlsx") {
-    setExporting(kind);
+  async function exportWorkbook() {
+    setExporting(true);
     try {
-      await downloadFile(`/api/applications/${id}/export.${kind}`, `application.${kind}`);
-      toast.success(`${kind.toUpperCase()} downloaded`);
+      await downloadFile(`/api/applications/${id}/export.xlsx`, "application.xlsx");
+      toast.success("Excel downloaded");
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Export failed");
     } finally {
-      setExporting(null);
+      setExporting(false);
     }
   }
 
@@ -104,11 +108,8 @@ export default function ApplicationDetailPage({
         subtitle={`Reference ${data.id} · submitted ${new Date(data.createdAt).toLocaleString("en-IN")}`}
         action={
           <div className="flex flex-wrap gap-2">
-            <Button variant="ghost" onClick={() => exportFile("xlsx")} loading={exporting === "xlsx"}>
+            <Button variant="ghost" onClick={exportWorkbook} loading={exporting}>
               ⬇ Excel
-            </Button>
-            <Button variant="ghost" onClick={() => exportFile("pdf")} loading={exporting === "pdf"}>
-              🖨 Printable PDF
             </Button>
             <Button variant="forest" onClick={rerunOcr} loading={rerunning}>
               🔄 Re-run OCR
@@ -117,6 +118,24 @@ export default function ApplicationDetailPage({
           </div>
         }
       />
+
+      {/* The printable record is produced from confirmed values, so it lives
+          with the verified applications rather than here in the working queue. */}
+      {data.humanDecision !== "UNREVIEWED" && (
+        <div className="mb-5 flex flex-wrap items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
+          <span className="text-lg">✓</span>
+          <span>
+            Verified by <strong>{data.humanReviewer || "a reviewer"}</strong>. The printable record
+            is on the verified applications page.
+          </span>
+          <Link
+            href={`/applications/verified/${data.id}`}
+            className="ml-auto font-semibold text-emerald-800 underline"
+          >
+            Open record →
+          </Link>
+        </div>
+      )}
 
       {/* ── Status summary ── */}
       <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -193,7 +212,13 @@ export default function ApplicationDetailPage({
             <p className="text-sm text-muted">No documents were attached to this application.</p>
           )}
           {data.documents.map((doc) => (
-            <DocumentCard key={doc.id} doc={doc} />
+            <DocumentCard
+              key={doc.id}
+              doc={doc}
+              applicationId={data.id}
+              onSaved={mutate}
+              focused={doc.id === focusDocId}
+            />
           ))}
         </div>
       </Section>
@@ -210,9 +235,22 @@ export default function ApplicationDetailPage({
                   </td>
                   <td className="px-4 py-3 align-top text-ink">
                     {row.isFile ? (
-                      <span className="inline-flex items-center gap-1.5 text-muted">
-                        📎 {row.value}
-                      </span>
+                      // A filename tells a reviewer nothing; the link opens the
+                      // actual scan they need to look at.
+                      row.viewUrl ? (
+                        <a
+                          href={row.viewUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1.5 font-semibold text-saffron hover:underline"
+                        >
+                          📎 {row.value} <span className="text-xs">↗</span>
+                        </a>
+                      ) : (
+                        <span className="inline-flex items-center gap-1.5 text-muted">
+                          📎 {row.value} <span className="text-xs">(not stored)</span>
+                        </span>
+                      )
                     ) : (
                       <span className="whitespace-pre-wrap">{row.value || "—"}</span>
                     )}
@@ -250,18 +288,42 @@ export default function ApplicationDetailPage({
 
 // ─────────────────────── document card ───────────────────────
 
-function DocumentCard({ doc }: { doc: VerifiedDocument }) {
+function DocumentCard({
+  doc,
+  applicationId,
+  onSaved,
+  focused,
+}: {
+  doc: VerifiedDocument;
+  applicationId: string;
+  onSaved: () => Promise<unknown>;
+  /** Linked to directly from an export; scroll it into view. */
+  focused?: boolean;
+}) {
   const [showText, setShowText] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [card, setCard] = useState<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (focused && card) card.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [focused, card]);
   const meta = DOC_TYPE_META[doc.docType] ?? DOC_TYPE_META.OTHER;
   const checks: CheckRecord[] = doc.checks ?? [];
-  const extracted = Object.entries(doc.extracted ?? {}).filter(
-    ([, v]) => v !== null && v !== undefined && v !== "" && typeof v !== "object",
-  );
+  // Show what the document says now, corrections included — never the stale
+  // machine reading a reviewer has already replaced.
+  const extracted = flattenExtracted(doc.values ?? doc.extracted);
 
   const isImage = doc.mimeType.startsWith("image/");
+  const editable = doc.editableFields ?? [];
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-sm">
+    <div
+      ref={setCard}
+      id={`doc-${doc.id}`}
+      className={`overflow-hidden rounded-2xl border bg-white shadow-sm ${
+        focused ? "border-saffron ring-2 ring-saffron/30" : "border-line"
+      }`}
+    >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface px-5 py-3">
         <div className="flex items-center gap-3">
           <span className="text-xl">{meta.icon}</span>
@@ -271,6 +333,7 @@ function DocumentCard({ doc }: { doc: VerifiedDocument }) {
               {doc.fileName}
               {doc.ocrProvider && ` · read by ${doc.ocrProvider}`}
               {doc.ocrConfidence > 0 && ` · ${doc.ocrConfidence.toFixed(0)}% confidence`}
+              {doc.correctedBy && ` · corrected by ${doc.correctedBy}`}
             </div>
           </div>
         </div>
@@ -333,22 +396,61 @@ function DocumentCard({ doc }: { doc: VerifiedDocument }) {
 
         {/* Extracted + checks */}
         <div className="min-w-0">
-          {extracted.length > 0 && (
-            <>
-              <h4 className="mb-2 text-xs font-bold uppercase tracking-wide text-muted">
-                Details read from this document
-              </h4>
+          <div className="mb-2 flex items-center justify-between gap-3">
+            <h4 className="text-xs font-bold uppercase tracking-wide text-muted">
+              Details read from this document
+            </h4>
+            {editable.length > 0 && !editing && (
+              <button
+                onClick={() => setEditing(true)}
+                className="rounded-lg border border-line px-2.5 py-1 text-xs font-semibold text-saffron hover:bg-surface"
+              >
+                ✎ Correct values
+              </button>
+            )}
+          </div>
+
+          {editing ? (
+            <CorrectionForm
+              doc={doc}
+              applicationId={applicationId}
+              onDone={async () => {
+                await onSaved();
+                setEditing(false);
+              }}
+              onCancel={() => setEditing(false)}
+            />
+          ) : (
+            extracted.length > 0 && (
               <div className="mb-4 grid gap-2 sm:grid-cols-2">
-                {extracted.map(([k, v]) => (
-                  <div key={k} className="rounded-lg bg-surface px-3 py-2">
-                    <div className="text-[10px] font-bold uppercase tracking-wide text-muted">
-                      {humaniseKey(k)}
+                {extracted.map(([label, value, key]) => {
+                  const corrected = key !== undefined && key in (doc.corrections ?? {});
+                  return (
+                    <div
+                      key={label}
+                      className={`rounded-lg px-3 py-2 ${
+                        corrected ? "bg-emerald-50 ring-1 ring-emerald-200" : "bg-surface"
+                      }`}
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] font-bold uppercase tracking-wide text-muted">
+                          {label}
+                        </span>
+                        {corrected && (
+                          <span
+                            className="text-[10px] font-bold text-emerald-700"
+                            title={`Corrected by ${doc.correctedBy || "a reviewer"}`}
+                          >
+                            ✎ corrected
+                          </span>
+                        )}
+                      </div>
+                      <div className="break-words text-sm font-semibold text-ink">{value}</div>
                     </div>
-                    <div className="break-words text-sm font-semibold text-ink">{String(v)}</div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
-            </>
+            )
           )}
 
           {checks.length > 0 && (
@@ -364,6 +466,151 @@ function DocumentCard({ doc }: { doc: VerifiedDocument }) {
             </>
           )}
         </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────── correcting a bad read ───────────────────────
+
+/** Human-readable labels for the fields a reviewer is allowed to correct. */
+const FIELD_LABELS: Record<string, string> = {
+  accountNumber: "Account number",
+  ifsc: "IFSC code",
+  bankName: "Bank",
+  branchName: "Branch",
+  accountHolder: "Account holder",
+  aadhaarNumber: "Aadhaar number",
+  name: "Name on card",
+  dob: "Date of birth",
+  gender: "Gender",
+  address: "Address",
+  pincode: "PIN code",
+  guardianName: "Parent / spouse (S/O, W/O, D/O)",
+  totalAmount: "Bill total",
+  patientName: "Patient name",
+  hospitalName: "Hospital",
+  billNumber: "Bill number",
+  billDate: "Bill date",
+  letterDate: "Letter date",
+};
+
+/** Fields worth giving more than one line of typing room. */
+const LONG_FIELDS = new Set(["address"]);
+
+/**
+ * Edit the values read off one document.
+ *
+ * The reviewer is looking at the scan beside this form, so this is where a bad
+ * read gets fixed. Corrections are saved separately from the OCR output, which
+ * is why re-running OCR afterwards does not undo them, and saving re-runs the
+ * document's checks so the verdicts reflect the corrected values immediately.
+ */
+function CorrectionForm({
+  doc,
+  applicationId,
+  onDone,
+  onCancel,
+}: {
+  doc: VerifiedDocument;
+  applicationId: string;
+  onDone: () => Promise<void>;
+  onCancel: () => void;
+}) {
+  const toast = useToast();
+  const values = (doc.values ?? doc.extracted ?? {}) as Record<string, unknown>;
+
+  const [draft, setDraft] = useState<Record<string, string>>(() =>
+    Object.fromEntries(
+      doc.editableFields.map((f) => [f, values[f] === null || values[f] === undefined ? "" : String(values[f])]),
+    ),
+  );
+  const [saving, setSaving] = useState(false);
+
+  const original = (doc.extracted ?? {}) as Record<string, unknown>;
+
+  async function save() {
+    // Only send what actually changed, so an untouched field is never recorded
+    // as a human-confirmed correction.
+    const changed: Record<string, string> = {};
+    for (const [field, value] of Object.entries(draft)) {
+      const current = values[field] === null || values[field] === undefined ? "" : String(values[field]);
+      if (value !== current) changed[field] = value;
+    }
+
+    if (Object.keys(changed).length === 0) {
+      onCancel();
+      return;
+    }
+
+    setSaving(true);
+    try {
+      await api(`/api/applications/${applicationId}/documents/${doc.id}`, {
+        method: "PATCH",
+        body: { corrections: changed },
+      });
+      toast.success("Corrections saved — checks re-run");
+      await onDone();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Could not save the corrections");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div className="mb-4 rounded-xl border border-saffron/40 bg-saffron/5 p-4">
+      <p className="mb-3 text-xs text-muted">
+        Read each value off the scan and correct anything wrong. Leave a field empty if the document
+        genuinely does not show it. Re-running OCR later will not overwrite what you enter here.
+      </p>
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        {doc.editableFields.map((field) => {
+          const label = FIELD_LABELS[field] ?? humaniseKey(field);
+          const machineRead = original[field];
+          const changed = draft[field] !== (values[field] == null ? "" : String(values[field]));
+
+          return (
+            <label key={field} className={LONG_FIELDS.has(field) ? "sm:col-span-2" : ""}>
+              <span className="text-[10px] font-bold uppercase tracking-wide text-muted">{label}</span>
+              {LONG_FIELDS.has(field) ? (
+                <textarea
+                  rows={2}
+                  value={draft[field] ?? ""}
+                  onChange={(e) => setDraft((d) => ({ ...d, [field]: e.target.value }))}
+                  className={`mt-1 w-full rounded-lg border bg-white px-2.5 py-1.5 text-sm outline-none focus:border-saffron ${
+                    changed ? "border-saffron" : "border-line"
+                  }`}
+                />
+              ) : (
+                <input
+                  value={draft[field] ?? ""}
+                  onChange={(e) => setDraft((d) => ({ ...d, [field]: e.target.value }))}
+                  className={`mt-1 w-full rounded-lg border bg-white px-2.5 py-1.5 text-sm outline-none focus:border-saffron ${
+                    changed ? "border-saffron" : "border-line"
+                  }`}
+                />
+              )}
+              {/* Keep the machine's original reading visible, so a reviewer can
+                  always see what they are overriding. */}
+              {machineRead !== null && machineRead !== undefined && machineRead !== "" && (
+                <span className="mt-0.5 block truncate text-[10px] text-muted">
+                  Read as: {String(machineRead)}
+                </span>
+              )}
+            </label>
+          );
+        })}
+      </div>
+
+      <div className="mt-4 flex justify-end gap-2">
+        <Button variant="ghost" onClick={onCancel}>
+          Cancel
+        </Button>
+        <Button onClick={save} loading={saving}>
+          Save corrections
+        </Button>
       </div>
     </div>
   );
@@ -496,6 +743,44 @@ function Section({
 }
 
 /**
+ * Flatten an extracted-fields object into label/value pairs for display.
+ *
+ * Nested records (the RBI directory entry behind an IFSC) and lists (the other
+ * lines on an Aadhaar card that could have been the name) are included rather
+ * than skipped — those are exactly the values a reviewer needs when a check
+ * comes back uncertain.
+ */
+function flattenExtracted(
+  extracted: unknown,
+  prefix = "",
+): Array<[label: string, value: string, key: string | undefined]> {
+  if (!extracted || typeof extracted !== "object") return [];
+  const out: Array<[string, string, string | undefined]> = [];
+
+  for (const [k, v] of Object.entries(extracted as Record<string, unknown>)) {
+    if (v === null || v === undefined || v === "") continue;
+    const label = prefix ? `${prefix} — ${humaniseKey(k)}` : humaniseKey(k);
+
+    if (Array.isArray(v)) {
+      if (v.length === 0) continue;
+      out.push([
+        label,
+        v.map((item) => (typeof item === "object" ? JSON.stringify(item) : String(item))).join(", "),
+        k,
+      ]);
+      continue;
+    }
+    if (typeof v === "object") {
+      // Nested values belong to their parent object, not to a correctable field.
+      out.push(...flattenExtracted(v, label));
+      continue;
+    }
+    out.push([label, String(v), prefix ? undefined : k]);
+  }
+  return out;
+}
+
+/**
  * Pair the payload with the current form field definitions so answers render
  * with their real questions, in the order the applicant saw them.
  */
@@ -506,7 +791,13 @@ function buildAnswers(data: ApplicationDetail) {
       ? data.fields.map((f) => f.fieldKey)
       : Object.keys(data.payload).filter((k) => k !== "meta_summary");
 
-  const rows: Array<{ key: string; label: string; value: string; isFile: boolean }> = [];
+  const rows: Array<{
+    key: string;
+    label: string;
+    value: string;
+    isFile: boolean;
+    viewUrl: string | null;
+  }> = [];
 
   for (const key of order) {
     if (key === "meta_summary") continue;
@@ -516,9 +807,15 @@ function buildAnswers(data: ApplicationDetail) {
     const label = labelByKey.get(key) ?? humaniseKey(key);
     if (value && typeof value === "object" && !Array.isArray(value)) {
       const f = value as { fileName?: string };
-      rows.push({ key, label, value: f.fileName ?? "Uploaded file", isFile: true });
+      rows.push({
+        key,
+        label,
+        value: f.fileName ?? "Uploaded file",
+        isFile: true,
+        viewUrl: data.documentsByField?.[key] ?? null,
+      });
     } else {
-      rows.push({ key, label, value: String(value ?? ""), isFile: false });
+      rows.push({ key, label, value: String(value ?? ""), isFile: false, viewUrl: null });
     }
   }
   return rows;

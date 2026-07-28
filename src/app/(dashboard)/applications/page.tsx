@@ -85,9 +85,17 @@ export default function ApplicationsPage() {
         title="Applications"
         subtitle="Aid applications with automatically verified documents. Every reading is cross-checked against the form — confirm before disbursing."
         action={
-          <Button variant="ghost" onClick={exportAll} loading={exporting}>
-            ⬇ Export all to Excel
-          </Button>
+          <div className="flex flex-wrap gap-2">
+            <Button variant="ghost" onClick={exportAll} loading={exporting}>
+              ⬇ Export all to Excel
+            </Button>
+            <Link
+              href="/applications/verified"
+              className="rounded-xl bg-saffron px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
+            >
+              ✓ Verified records
+            </Link>
+          </div>
         }
       />
 

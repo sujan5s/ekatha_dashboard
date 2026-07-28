@@ -175,7 +175,16 @@ export interface VerifiedDocument {
   ocrProvider: string;
   ocrConfidence: number;
   rawText: string;
+  /** Exactly what OCR read, never overwritten by a correction. */
   extracted: Record<string, unknown> | null;
+  /** Reviewer corrections, keyed by field name. */
+  corrections: Record<string, unknown>;
+  /** `extracted` with `corrections` applied — what the document actually says. */
+  values: Record<string, unknown>;
+  /** Which fields this document type allows a reviewer to correct. */
+  editableFields: string[];
+  correctedBy: string;
+  correctedAt: string | null;
   checks: CheckRecord[] | null;
   status: VerificationStatus;
   error: string;
@@ -219,7 +228,15 @@ export interface ApplicationDetail {
   payload: Record<string, unknown>;
   fields: ApplicationFormFieldDef[];
   documents: VerifiedDocument[];
+  /** Form field key → view URL, so file answers can be opened from the table. */
+  documentsByField: Record<string, string>;
   checkSummary: CheckSummary;
+}
+
+/** A row in the archive of applications a human has decided on. */
+export interface VerifiedApplicationRow extends ApplicationRow {
+  /** How many documents carry at least one reviewer correction. */
+  correctedCount: number;
 }
 
 export interface AdminUserRow {

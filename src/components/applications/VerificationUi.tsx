@@ -157,9 +157,19 @@ export const DOC_TYPE_META: Record<DocType, { label: string; icon: string }> = {
 };
 
 /** Turn an extracted-field key into a readable label. */
+/** Field keys that are acronyms, and would otherwise render as "Ifsc"/"Dob". */
+const ACRONYMS = new Set(["IFSC", "DOB", "MICR", "OCR", "ID", "UHID", "PAN", "INR"]);
+
 export function humaniseKey(key: string): string {
   return key
     .replace(/([a-z])([A-Z])/g, "$1 $2")
     .replace(/[_-]+/g, " ")
-    .replace(/^\w/, (c) => c.toUpperCase());
+    .split(" ")
+    .filter(Boolean)
+    .map((word) =>
+      ACRONYMS.has(word.toUpperCase())
+        ? word.toUpperCase()
+        : word.charAt(0).toUpperCase() + word.slice(1),
+    )
+    .join(" ");
 }
