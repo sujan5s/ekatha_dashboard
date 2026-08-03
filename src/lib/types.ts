@@ -193,6 +193,34 @@ export interface VerifiedDocument {
   viewUrl: string | null;
 }
 
+/** Verdict for one row of the cross-document comparison. */
+export type MatchStatus =
+  | "MATCHED"
+  | "MISMATCH"
+  | "REVIEW"
+  | "FOUND"
+  | "NOT_FOUND"
+  | "SINGLE_SOURCE"
+  | "NA";
+
+/** One fact, as it appears on every document that states it. */
+export interface ComparisonRow {
+  key: string;
+  label: string;
+  /** Value per document type; a missing key means the document is silent on it. */
+  cells: Partial<Record<DocType, string>>;
+  status: MatchStatus;
+  detail: string;
+  /** What the application form itself said, when it is comparable. */
+  formValue?: string;
+}
+
+export interface ComparisonMatrix {
+  columns: Array<{ docType: DocType; label: string }>;
+  rows: ComparisonRow[];
+  summary: { matched: number; mismatched: number; review: number; missing: number };
+}
+
 export interface ApplicationFormFieldDef {
   id: string;
   fieldKey: string;
@@ -230,6 +258,8 @@ export interface ApplicationDetail {
   documents: VerifiedDocument[];
   /** Form field key → view URL, so file answers can be opened from the table. */
   documentsByField: Record<string, string>;
+  /** Every fact side by side across the documents that state it. */
+  comparison: ComparisonMatrix;
   checkSummary: CheckSummary;
 }
 

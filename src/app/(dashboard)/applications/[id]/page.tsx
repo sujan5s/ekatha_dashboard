@@ -13,6 +13,7 @@ import {
   VerificationBadge,
   DecisionBadge,
   CheckRow,
+  ComparisonTable,
   DOC_TYPE_META,
   humaniseKey,
 } from "@/components/applications/VerificationUi";
@@ -39,8 +40,10 @@ export default function ApplicationDetailPage({
     `/api/applications/${id}`,
     api,
     {
-      refreshInterval: (d) =>
-        d?.verificationStatus === "PROCESSING" || d?.verificationStatus === "PENDING" ? 4000 : 0,
+      // Poll while the documents are being read — but stop once it has clearly
+      // stalled. Polling for ever renders as a spinner that never resolves and
+      // tells the reviewer nothing; the banner below says what happened instead.
+      refreshInterval: (d) => (isReading(d) && !hasStalled(d) ? 4000 : 0),
     },
   );
 
@@ -119,6 +122,43 @@ export default function ApplicationDetailPage({
         }
       />
 
+      {/* ── While the documents are being read ──
+          Until this finishes there is nothing on the page but a badge, which
+          reads as a broken screen rather than as work in progress. Say what is
+          happening, roughly how long it takes, and — once it has run far past
+          that — say plainly that it has stalled and offer the way out. */}
+      {isReading(data) && (
+        <div
+          className={`mb-5 flex flex-wrap items-center gap-3 rounded-xl border px-4 py-3 text-sm ${
+            hasStalled(data)
+              ? "border-amber-300 bg-amber-50 text-amber-900"
+              : "border-blue-200 bg-blue-50 text-blue-900"
+          }`}
+        >
+          {hasStalled(data) ? (
+            <>
+              <span className="text-lg">⚠</span>
+              <span>
+                Reading these documents has been running for{" "}
+                <strong>{minutesSince(data.updatedAt)} minutes</strong>, far longer than it should.
+                The run was most likely interrupted. Start it again — anything already read is kept.
+              </span>
+              <Button variant="forest" onClick={rerunOcr} loading={rerunning} className="ml-auto">
+                🔄 Re-run OCR
+              </Button>
+            </>
+          ) : (
+            <>
+              <span className="ek-spin text-lg">🔄</span>
+              <span>
+                Reading the uploaded documents. This usually takes under a minute — the page updates
+                itself when it is done.
+              </span>
+            </>
+          )}
+        </div>
+      )}
+
       {/* The printable record is produced from confirmed values, so it lives
           with the verified applications rather than here in the working queue. */}
       {data.humanDecision !== "UNREVIEWED" && (
@@ -189,6 +229,23 @@ export default function ApplicationDetailPage({
           <div className="text-xs font-bold uppercase tracking-wide text-muted">Reviewer notes</div>
           <p className="mt-1 whitespace-pre-wrap text-sm text-ink">{data.humanNotes}</p>
         </div>
+      )}
+
+      {/* ── The comparison ──
+          First, deliberately: it is the whole application in one screen, and it
+          is where a wrong account number or a different person shows up. The
+          per-document detail below exists to explain a row that looks wrong. */}
+      {data.comparison && data.comparison.rows.length > 0 && (
+        <Section
+          title="Document comparison"
+          subtitle="Every value as each document states it, and whether they agree"
+        >
+          <ComparisonTable matrix={data.comparison} />
+          <p className="mt-2 text-xs text-muted">
+            Read across each row. Anything marked <strong>Mismatch</strong> or{" "}
+            <strong>Check</strong> needs your eyes on the scans before this application is approved.
+          </p>
+        </Section>
       )}
 
       {/* ── Cross-document checks ── */}
@@ -284,6 +341,32 @@ export default function ApplicationDetailPage({
       )}
     </>
   );
+}
+
+// ─────────────────────── reading state ───────────────────────
+
+/**
+ * How long a read may run before it is treated as stalled.
+ *
+ * Generous on purpose. Every document is a round-trip to a vision model, and the
+ * cost of calling a slow run "stalled" is only a banner the reviewer can ignore,
+ * whereas calling a stalled run "slow" is the bug this replaces — a page that
+ * spins for ever and never says why.
+ */
+const STALL_AFTER_MS = 5 * 60 * 1000;
+
+function isReading(d?: ApplicationDetail): boolean {
+  return d?.verificationStatus === "PROCESSING" || d?.verificationStatus === "PENDING";
+}
+
+/** `updatedAt` last moved when the submission entered PROCESSING. */
+function hasStalled(d?: ApplicationDetail): boolean {
+  if (!isReading(d) || !d?.updatedAt) return false;
+  return Date.now() - new Date(d.updatedAt).getTime() > STALL_AFTER_MS;
+}
+
+function minutesSince(iso: string): number {
+  return Math.max(1, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
 }
 
 // ─────────────────────── document card ───────────────────────
@@ -492,11 +575,29 @@ const FIELD_LABELS: Record<string, string> = {
   hospitalName: "Hospital",
   billNumber: "Bill number",
   billDate: "Bill date",
+  receiptType: "Kind of document (bill, advance receipt…)",
   letterDate: "Letter date",
+  beneficiaryName: "Person the letter is for",
+  matchesDocument: "Same person as the Aadhaar photo?",
 };
 
 /** Fields worth giving more than one line of typing room. */
 const LONG_FIELDS = new Set(["address"]);
+
+/**
+ * Yes/no fields, offered as a choice rather than a text box.
+ *
+ * "Could not tell" is a first-class answer here, not an empty field: a reviewer
+ * who genuinely cannot tell two blurred photographs apart is recording a real
+ * finding, and forcing that into yes-or-no would put a guess on the record.
+ */
+const BOOLEAN_FIELDS = new Set(["matchesDocument"]);
+
+const BOOLEAN_OPTIONS: Array<{ value: string; label: string }> = [
+  { value: "", label: "Could not tell" },
+  { value: "true", label: "Yes — same person" },
+  { value: "false", label: "No — different person" },
+];
 
 /**
  * Edit the values read off one document.
@@ -574,7 +675,21 @@ function CorrectionForm({
           return (
             <label key={field} className={LONG_FIELDS.has(field) ? "sm:col-span-2" : ""}>
               <span className="text-[10px] font-bold uppercase tracking-wide text-muted">{label}</span>
-              {LONG_FIELDS.has(field) ? (
+              {BOOLEAN_FIELDS.has(field) ? (
+                <select
+                  value={draft[field] ?? ""}
+                  onChange={(e) => setDraft((d) => ({ ...d, [field]: e.target.value }))}
+                  className={`mt-1 w-full rounded-lg border bg-white px-2.5 py-1.5 text-sm outline-none focus:border-saffron ${
+                    changed ? "border-saffron" : "border-line"
+                  }`}
+                >
+                  {BOOLEAN_OPTIONS.map((o) => (
+                    <option key={o.value} value={o.value}>
+                      {o.label}
+                    </option>
+                  ))}
+                </select>
+              ) : LONG_FIELDS.has(field) ? (
                 <textarea
                   rows={2}
                   value={draft[field] ?? ""}
@@ -596,7 +711,7 @@ function CorrectionForm({
                   always see what they are overriding. */}
               {machineRead !== null && machineRead !== undefined && machineRead !== "" && (
                 <span className="mt-0.5 block truncate text-[10px] text-muted">
-                  Read as: {String(machineRead)}
+                  Read as: {displayValue(machineRead)}
                 </span>
               )}
             </label>
@@ -742,6 +857,12 @@ function Section({
   );
 }
 
+/** Render a read value for a human. Raw `true`/`false` reads as a bug, not a fact. */
+function displayValue(value: unknown): string {
+  if (typeof value === "boolean") return value ? "Yes" : "No";
+  return String(value);
+}
+
 /**
  * Flatten an extracted-fields object into label/value pairs for display.
  *
@@ -775,7 +896,7 @@ function flattenExtracted(
       out.push(...flattenExtracted(v, label));
       continue;
     }
-    out.push([label, String(v), prefix ? undefined : k]);
+    out.push([label, displayValue(v), prefix ? undefined : k]);
   }
   return out;
 }

@@ -4,8 +4,10 @@ import type {
   CheckRecord,
   CheckResult,
   CheckSummary,
+  ComparisonMatrix,
   DocType,
   HumanDecision,
+  MatchStatus,
   VerificationStatus,
 } from "@/lib/types";
 
@@ -143,6 +145,113 @@ function ValueCell({ label, value }: { label: string; value: string }) {
     <div className="rounded-lg bg-white/60 px-2.5 py-1.5">
       <div className="text-[10px] font-bold uppercase tracking-wide opacity-70">{label}</div>
       <div className="break-words text-xs font-semibold">{value}</div>
+    </div>
+  );
+}
+
+// ─────────────────────── cross-document comparison ───────────────────────
+
+const MATCH_STYLE: Record<MatchStatus, { label: string; cls: string }> = {
+  MATCHED: { label: "Matched", cls: "bg-emerald-100 text-emerald-800" },
+  FOUND: { label: "Found", cls: "bg-emerald-100 text-emerald-800" },
+  MISMATCH: { label: "Mismatch", cls: "bg-rose-100 text-rose-800" },
+  REVIEW: { label: "Check", cls: "bg-amber-100 text-amber-800" },
+  NOT_FOUND: { label: "Not found", cls: "bg-rose-50 text-rose-700" },
+  SINGLE_SOURCE: { label: "One source", cls: "bg-blue-50 text-blue-700" },
+  NA: { label: "N/A", cls: "bg-surface text-muted" },
+};
+
+export function MatchBadge({ status }: { status: MatchStatus }) {
+  const s = MATCH_STYLE[status];
+  return (
+    <span
+      className={`inline-block whitespace-nowrap rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide ${s.cls}`}
+    >
+      {s.label}
+    </span>
+  );
+}
+
+/**
+ * Every fact the application asserts, as each document states it.
+ *
+ * The per-document checks are organised by document, which is the wrong shape
+ * for the question a reviewer is actually answering: is this the same person,
+ * and is this the right account? That question is answered by reading *across*
+ * — Aadhaar name, passbook name, letter name — so this table puts one fact per
+ * row and one document per column, and states the verdict in a single word at
+ * the end of the row.
+ *
+ * A blank cell is meaningful: it means that document does not carry this fact,
+ * which is not the same as a disagreement, so it renders as an explicit "N/A"
+ * rather than as empty space.
+ */
+export function ComparisonTable({ matrix }: { matrix: ComparisonMatrix }) {
+  if (matrix.columns.length === 0) {
+    return <p className="text-sm text-muted">No documents to compare on this application.</p>;
+  }
+
+  return (
+    // The table has a column per document and cannot narrow indefinitely; it
+    // scrolls inside its own frame so the page never scrolls sideways.
+    <div className="overflow-x-auto rounded-2xl border border-line bg-white shadow-sm">
+      <table className="w-full min-w-[760px] border-collapse text-sm">
+        <thead>
+          <tr className="border-b border-line bg-surface text-left">
+            <th className="px-4 py-3 text-xs font-bold uppercase tracking-wide text-muted">
+              Parameter
+            </th>
+            {matrix.columns.map((c) => (
+              <th
+                key={c.docType}
+                className="border-l border-line px-4 py-3 text-xs font-bold uppercase tracking-wide text-muted"
+              >
+                <span className="mr-1.5">{DOC_TYPE_META[c.docType]?.icon}</span>
+                {c.label}
+              </th>
+            ))}
+            <th className="border-l border-line px-4 py-3 text-xs font-bold uppercase tracking-wide text-muted">
+              Verification
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {matrix.rows.map((row) => (
+            <tr key={row.key} className="border-b border-line last:border-b-0 align-top">
+              <th className="bg-surface/60 px-4 py-3 text-left text-sm font-semibold text-ink">
+                {row.label}
+                {row.formValue && (
+                  <span className="mt-1 block max-w-[180px] text-[11px] font-normal leading-snug text-muted">
+                    On the form: {row.formValue}
+                  </span>
+                )}
+              </th>
+
+              {matrix.columns.map((c) => {
+                const value = row.cells[c.docType];
+                return (
+                  <td key={c.docType} className="border-l border-line px-4 py-3">
+                    {value ? (
+                      <span className="break-words text-ink">{value}</span>
+                    ) : (
+                      <span className="text-xs text-muted">N/A</span>
+                    )}
+                  </td>
+                );
+              })}
+
+              <td className="border-l border-line px-4 py-3">
+                <MatchBadge status={row.status} />
+                {row.detail && (
+                  <p className="mt-1.5 max-w-[240px] text-[11px] leading-snug text-muted">
+                    {row.detail}
+                  </p>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
