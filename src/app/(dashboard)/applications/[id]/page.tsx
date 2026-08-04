@@ -857,9 +857,13 @@ function Section({
   );
 }
 
+/** Fields that are a 0–100 score and should read as one. */
+const PERCENT_FIELDS = new Set(["matchPercent", "matchConfidence"]);
+
 /** Render a read value for a human. Raw `true`/`false` reads as a bug, not a fact. */
-function displayValue(value: unknown): string {
+function displayValue(value: unknown, key?: string): string {
   if (typeof value === "boolean") return value ? "Yes" : "No";
+  if (key && PERCENT_FIELDS.has(key) && typeof value === "number") return `${Math.round(value)}%`;
   return String(value);
 }
 
@@ -896,7 +900,7 @@ function flattenExtracted(
       out.push(...flattenExtracted(v, label));
       continue;
     }
-    out.push([label, displayValue(v), prefix ? undefined : k]);
+    out.push([label, displayValue(v, k), prefix ? undefined : k]);
   }
   return out;
 }

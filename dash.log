@@ -1,0 +1,2172 @@
+
+> ekatha_dashboard@0.1.0 dev
+> next dev -p 3001
+
+▲ Next.js 16.2.10 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://192.168.56.1:3001
+- Environments: .env.local
+✓ Ready in 664ms
+
+○ Compiling /applications/[id] ...
+ GET /applications/cf193b24-d30c-48b4-be86-2f5a7f109195 200 in 5.4s (next.js: 5.2s, application-code: 211ms)
+ GET /applications 200 in 356ms (next.js: 300ms, application-code: 56ms)
+ GET /applications/verified 200 in 394ms (next.js: 348ms, application-code: 46ms)
+ GET /applications/cf193b24-d30c-48b4-be86-2f5a7f109195 200 in 52ms (next.js: 14ms, application-code: 38ms)
+ GET /applications/verified/cf193b24-d30c-48b4-be86-2f5a7f109195 200 in 855ms (next.js: 800ms, application-code: 55ms)
+ GET /applications 200 in 24ms (next.js: 5ms, application-code: 19ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+ GET /applications/3c4b02d9-c61f-4ee9-871b-c177322cc965 200 in 38ms (next.js: 15ms, application-code: 24ms)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:26:22)
+  24 |     const id = Date.now() + Math.random();
+  25 |     setToasts((t) => [...t, { id, message, kind }]);
+> 26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+     |                      ^
+  27 |   }, []);
+  28 |
+  29 |   const api: ToastApi = { (src/components/ui/Toast.tsx:26:22)
+ GET /applications/3c4b02d9-c61f-4ee9-871b-c177322cc965 200 in 92ms (next.js: 24ms, application-code: 69ms)
+✓ Compiled in 95ms
+ GET /applications/3c4b02d9-c61f-4ee9-871b-c177322cc965 200 in 185ms (next.js: 126ms, application-code: 58ms)
+✓ Compiled in 59ms
+ GET /applications/3c4b02d9-c61f-4ee9-871b-c177322cc965 200 in 173ms (next.js: 121ms, application-code: 52ms)
+ GET /applications 200 in 157ms (next.js: 20ms, application-code: 137ms)
+ GET /applications/verified 200 in 64ms (next.js: 20ms, application-code: 44ms)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+[browser] Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. 
+    at ToastProvider.useCallback[push] (src/components/ui/Toast.tsx:25:5)
+    at Object.error (src/components/ui/Toast.tsx:31:19)
+    at ApplicationDetailPage.useEffect (src/app/(dashboard)/applications/[id]/page.tsx:55:22)
+  23 |   const push = useCallback((message: string, kind: ToastKind) => {
+  24 |     const id = Date.now() + Math.random();
+> 25 |     setToasts((t) => [...t, { id, message, kind }]);
+     |     ^
+  26 |     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 4000);
+  27 |   }, []);
+  28 | (src/components/ui/Toast.tsx:25:5)
+ GET /applications/3c4b02d9-c61f-4ee9-871b-c177322cc965 200 in 72ms (next.js: 16ms, application-code: 56ms)
+ GET /login 200 in 434ms (next.js: 412ms, application-code: 22ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+ GET /icon.webp?v=2 404 in 299ms (next.js: 256ms, application-code: 43ms)
+ GET /login 200 in 60ms (next.js: 4ms, application-code: 56ms)
