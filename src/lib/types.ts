@@ -39,6 +39,9 @@ export interface HomeText {
   aboutImageKey: string;
   aboutImage2Url: string;
   aboutImage2Key: string;
+  newsBadge: string;
+  newsHeading: string;
+  newsSub: string;
 }
 
 export interface StatCounter {
@@ -56,6 +59,15 @@ export interface ImpactBar {
   percent: number;
   colorFrom: string;
   colorTo: string;
+  order: number;
+}
+
+export interface NewsArticle {
+  id: string;
+  title: string;
+  date: string;
+  imageUrl: string;
+  imageKey: string;
   order: number;
 }
 
